@@ -4,5 +4,6 @@
 
 mod dna;
 mod fasta;
+mod protein;
 mod io;
 mod str;
