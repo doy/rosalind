@@ -9,7 +9,7 @@ fn translate(rna: &str) -> ~str {
     let mut protein = str::with_capacity(codons);
 
     for uint::range(0, codons) |i| {
-        let codon = str::slice(rna, i * 3, i * 3 + 3);
+        let codon = str::view(rna, i * 3, i * 3 + 3);
         let amino = translate_single(codon);
         if (amino == STOP) {
             break;
