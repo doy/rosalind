@@ -1,6 +1,6 @@
 use str = core::str;
 
-pure fn gc_content(dna: ~str) -> float {
+pure fn gc_content(dna: &str) -> float {
     let mut content = 0;
     for str::each_char(dna) |ch| {
         match ch {

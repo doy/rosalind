@@ -10,7 +10,7 @@ fn reverse(s: &str) -> ~str {
     r
 }
 
-pure fn hamming(string1: ~str, string2: ~str) -> int {
+pure fn hamming(string1: &str, string2: &str) -> int {
     let mut hamming = 0;
     for str::each_chari(string1) |i, ch| {
         if ch != str::char_at(string2, i) {
