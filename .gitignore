@@ -1,2 +1,7 @@
+*
+!*.*
+!*/
+
+.*.sw*
+data/
 rosalind*.txt
-data
