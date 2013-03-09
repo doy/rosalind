@@ -5,3 +5,4 @@
 .*.sw*
 data/
 rosalind*.txt
+rosalind/librosalind*.so

@@ -1,0 +1,8 @@
+#[link(name = "rosalind", vers = "0.0.1", author = "doy")];
+
+#[crate_type = "lib"];
+
+mod dna;
+mod fasta;
+mod io;
+mod str;

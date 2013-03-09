@@ -1,16 +1,11 @@
-use io::{stdin,println,ReaderUtil};
+extern mod rosalind;
+use rosalind::io::input_line;
+use rosalind::str::hamming;
 
 fn main() {
-    let dna1 = stdin().read_line();
-    let dna2 = stdin().read_line();
+    let dna1 = input_line();
+    let dna2 = input_line();
     assert str::len(dna1) == str::len(dna2);
 
-    let mut hamming = 0;
-    for str::each_chari(dna1) |i, ch| {
-        if ch != str::char_at(dna2, i) {
-            hamming += 1;
-        }
-    }
-
-    println(fmt!("%d", hamming));
+    io::println(fmt!("%d", hamming(dna1, dna2)));
 }

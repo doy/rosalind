@@ -1,4 +1,5 @@
-use io::{stdin,println,ReaderUtil};
+extern mod rosalind;
+use rosalind::io::input_line;
 
 fn count_nucleotides(dna: &str) -> (int, int, int, int) {
     let mut (a, c, g, t) = (0, 0, 0, 0);
@@ -28,8 +29,8 @@ fn count_nucleotides_2(dna: &str) -> (int, int, int, int) {
 }
 
 fn main() {
-    let dna = stdin().read_line();
+    let dna = input_line();
     let (a, c, g, t) = count_nucleotides(dna);
     /*let (a, c, g, t) = count_nucleotides_2(dna);*/
-    println(fmt!("%d %d %d %d", a, c, g, t));
+    io::println(fmt!("%d %d %d %d", a, c, g, t));
 }
