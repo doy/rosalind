@@ -2,8 +2,7 @@ use str = core::str;
 
 /* really feels like there should be a more efficient way to do this */
 fn reverse(s: &str) -> ~str {
-    let mut r = ~"";
-    str::reserve(&mut r, str::len(s));
+    let mut r = str::with_capacity(str::len(s));
     for str::each_char(s) |ch| {
         str::unshift_char(&mut r, ch)
     }
