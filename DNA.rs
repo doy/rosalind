@@ -9,7 +9,7 @@ fn count_nucleotides(dna: &str) -> (int, int, int, int) {
             'C' => c += 1,
             'G' => g += 1,
             'T' => t += 1,
-            _   => fail ~"Unexpected character found"
+            _   => fail!(~"Unexpected character found"),
         }
     }
     (a, c, g, t)
@@ -23,7 +23,7 @@ fn count_nucleotides_2(dna: &str) -> (int, int, int, int) {
             'C' => (a, c + 1, g, t),
             'G' => (a, c, g + 1, t),
             'T' => (a, c, g, t + 1),
-            _   => fail ~"Unexpected character found"
+            _   => fail!(~"Unexpected character found"),
         }
     }
 }

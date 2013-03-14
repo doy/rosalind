@@ -1,4 +1,4 @@
-use io::{stdin,stdout,ReaderUtil,WriterUtil};
+use core::io::{stdin,stdout,ReaderUtil,WriterUtil};
 
 extern mod rosalind;
 use rosalind::dna::transcribe;

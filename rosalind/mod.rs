@@ -2,8 +2,8 @@
 
 #[crate_type = "lib"];
 
-mod dna;
-mod fasta;
-mod protein;
-mod io;
-mod str;
+pub mod dna;
+pub mod fasta;
+pub mod protein;
+pub mod io;
+pub mod str;

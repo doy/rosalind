@@ -3,7 +3,7 @@ use str = core::str;
 const STOP: char = -1 as char;
 
 fn translate(rna: &str) -> ~str {
-    assert str::len(rna) % 3 == 0;
+    fail_unless!(str::len(rna) % 3 == 0);
 
     let codons = str::len(rna) / 3;
     let mut protein = str::with_capacity(codons);
@@ -21,7 +21,7 @@ fn translate(rna: &str) -> ~str {
 }
 
 priv fn translate_single(codon: &str) -> char {
-    assert str::len(codon) == 3;
+    fail_unless!(str::len(codon) == 3);
     match codon {
         "UUU" => 'F',     "CUU" => 'L',      "AUU" => 'I',      "GUU" => 'V',
         "UUC" => 'F',     "CUC" => 'L',      "AUC" => 'I',      "GUC" => 'V',
@@ -39,6 +39,6 @@ priv fn translate_single(codon: &str) -> char {
         "UGC" => 'C',     "CGC" => 'R',      "AGC" => 'S',      "GGC" => 'G',
         "UGA" => STOP,    "CGA" => 'R',      "AGA" => 'R',      "GGA" => 'G',
         "UGG" => 'W',     "CGG" => 'R',      "AGG" => 'R',      "GGG" => 'G',
-        _ => fail ~"Unknown codon",
+        _ => fail!(~"Unknown codon"),
     }
 }

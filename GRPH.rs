@@ -1,11 +1,11 @@
-use str::{len,view};
+use core::str::{len,view};
 
 extern mod rosalind;
 use rosalind::fasta::FASTAReader;
 
 fn main() {
     let mut dna: ~[(~str, ~str)] = ~[];
-    let reader = FASTAReader::new();
+    let mut reader = FASTAReader::new();
     for reader.each_sequence |cur_name, cur_seq| {
         let cur_len = len(cur_seq);
         for dna.each |&(prev_name, prev_seq)| {

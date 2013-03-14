@@ -4,8 +4,8 @@ use str = core::str;
 const EOF: char = -1 as char;
 
 struct FASTAReader {
-    in:              Reader,
-    priv mut peeked: char,
+    in:          Reader,
+    priv peeked: char,
 }
 
 impl FASTAReader {
@@ -13,7 +13,7 @@ impl FASTAReader {
         FASTAReader { in: stdin(), peeked: EOF }
     }
 
-    priv fn read_line(&self) -> ~str {
+    fn read_line(&mut self) -> ~str {
         let mut line = self.in.read_line();
         if self.peeked != '>' {
             str::unshift_char(&mut line, self.peeked);
@@ -22,7 +22,7 @@ impl FASTAReader {
         line
     }
 
-    priv fn read_sequence(&self) -> (~str, ~str) {
+    fn read_sequence(&mut self) -> (~str, ~str) {
         if self.peeked == EOF {
             self.peeked = self.in.read_char();
         }
@@ -36,10 +36,20 @@ impl FASTAReader {
         (name, dna)
     }
 
-    fn each_sequence(&self, cb: fn(~str, ~str) -> bool) {
+    pub fn each_sequence(&mut self, cb: &fn(~str, ~str) -> bool) {
         while !self.in.eof() {
             let (name, dna) = self.read_sequence();
             cb(name, dna);
         }
+    }
+
+    pub fn sequences(&mut self) -> (~[~str], ~[~str]) {
+        let mut names = ~[];
+        let mut dnas  = ~[];
+        for self.each_sequence |name, dna| {
+            names.push(name);
+            dnas.push(dna);
+        }
+        (names, dnas)
     }
 }
